@@ -1,9 +1,9 @@
 package seedu.duke.ui;
 
-import seedu.duke.member.TeamMember;
 import seedu.duke.project.Project;
 import seedu.duke.project.ProjectList;
 import seedu.duke.task.Task;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -111,55 +111,6 @@ public class Ui {
 
     public static String printTaskDeletedMessage(String taskName) {
         return "Task \"" + taskName + "\" removed!";
-    }
-
-    public static String printHomeView(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) {
-        String output = "Hello! Welcome to EZ Manager!\n";
-        output += "\n ---------------------- ";
-        output += "\n| PROJECT LIST         |";
-        output += "\n ---------------------- \n";
-        output += "\nStatus     Project Name                       Deadline      Tasks Completed";
-        output += "\n---------------------------------------------------------------------------";
-        for (Project project : projects) {
-            String projectName = project.getProjectName();
-            String paddedProjectName = String.format("%-35s", projectName);
-            String paddedProjectDeadline;
-            if (project.getProjectDeadline() != null) {
-                String projectDeadline = project.getProjectDeadline().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                paddedProjectDeadline = String.format("%-14s", projectDeadline);
-            } else {
-                paddedProjectDeadline = String.format("%-14s", "-");
-            }
-            String taskCompleted = project.getNumberOfFinishedTask() + "/"
-                    + project.getNumberOfTask();
-            String paddedTaskCompleted = String.format("%-15s", taskCompleted);
-            output += "\n           " + paddedProjectName + paddedProjectDeadline + paddedTaskCompleted;
-        }
-        output += "\n\n ---------------------- ";
-        output += "\n| MEMBERS LIST         |";
-        output += "\n ---------------------- \n";
-        output += "\nName                      Role              Projects Involved              ";
-        output += "\n---------------------------------------------------------------------------";
-        for (TeamMember member : teamMembers) {
-            String memberName = member.getName();
-            String paddedMemberName = String.format("%-26s", memberName);
-            //String memberRole;
-            output += "\n" + paddedMemberName + "                  ";
-            if (member.getAssignedProjects() != null) {
-                for (int i = 0; i < member.getAssignedProjects().size(); i++) {
-                    Project assignedProject = member.getAssignedProjects().get(i);
-                    String paddedAssignedProject = String.format("%-28s", assignedProject.getProjectName());
-                    if (i == 0) {
-                        output += "1. " + paddedAssignedProject;
-                    } else {
-                        output += "\n                                            "
-                                + (i + 1) + ". " + paddedAssignedProject;
-                    }
-                }
-            }
-            output += System.lineSeparator();
-        }
-        return output;
     }
 
     public static String printTaskSelectedMessage(String taskName) {

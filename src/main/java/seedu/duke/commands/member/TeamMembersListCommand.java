@@ -21,34 +21,19 @@ public class TeamMembersListCommand extends Command {
         if (teamMembers.size() == 0) {
             return "No team members have been added.";
         }
-        String listOfMembers = "List of members:              Project(s) Assigned:";
+        String listOfMembers = "List of members:";
         int i = 0;
-        int amountOfPadding = 0;
+
         if (isHomeView) {
             for (TeamMember member : teamMembers) {
-                if (member.getName().length() > 26) {
-                    listOfMembers += "\n" + (i + 1) + ". " + member.getName().substring(0,26) + " ";
-                } else {
-                    listOfMembers += "\n" + String.format("%-30s", (i + 1) + ". " + member.getName());;
-                }
-                if (!member.getAssignedProjects().isEmpty()) {
-                    for (int j = 0; j < member.getAssignedProjects().size(); j++) {
-                        Project assignedProject = member.getAssignedProjects().get(j);
-                        if (j == 0) {
-                            listOfMembers += (j + 1) + ") " + assignedProject.getProjectName();
-                        } else {
-                            amountOfPadding = 33 + assignedProject.getProjectName().length();
-                            listOfMembers += "\n" + String.format("%1$" + amountOfPadding + "s", (j + 1) + ") "
-                                    + assignedProject.getProjectName());
-                        }
-                    }
-                } else {
-                    listOfMembers += "Not assigned to a project";
-                }
-                listOfMembers += System.lineSeparator();
+                String assignmentStatus = (member.getAssignedProjectId() == -1) ? "Not assigned to a project"
+                        : "Assigned to Project \""
+                        + projects.get(member.getAssignedProjectId()).getProjectName() + "\"";
+                listOfMembers += "\n" + (i + 1) + ". " + member.getName() + ": \t" + assignmentStatus;
                 i++;
             }
         } else {
+            // There is no need for catch statement here since I am already inside a project.
             ArrayList<TeamMember> teamMembersInSelectedProject = projects.get(projectIndex).getTeamMembers();
             for (TeamMember member : teamMembersInSelectedProject) {
                 listOfMembers += "\n" + (i + 1) + ". " + member.getName();
