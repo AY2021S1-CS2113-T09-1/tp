@@ -39,6 +39,10 @@ public class DukeExceptions extends Exception {
         exceptionMessageList.put("emptyTeamMembersList","Team Members list is empty!");
         exceptionMessageList.put("emptyTaskList","Task list is empty!");
         exceptionMessageList.put("indexNonInteger","Index must be an integer!");
+        exceptionMessageList.put("multipleParams",
+                "Multiple parameters detected! Please enter command in the correct format");
+        exceptionMessageList.put("paramValueIncorrect","Please only provide appropriate parameters!"
+                        + " e.g p/<positive integer> t/<positive integer>");
     }
 
     public String toString() {

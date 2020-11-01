@@ -64,17 +64,74 @@ public class Parser {
         return projectIndex;
     }
 
-    public static HashMap<String, String> getParams(String paramsString) {
+    public static HashMap<String, String> getParams(String paramsString, String taskType) throws DukeExceptions {
         HashMap<String, String> inputParams = new HashMap<>();
-        Pattern p = Pattern.compile(".\\/.+?(?=\\s.\\/.+)|.\\/.+");
-        String test = paramsString;
-        Matcher m = p.matcher(test);
-        while (m.find()) {
-            String[] keyAndValue = m.group().split("/");
-            String paramType = keyAndValue[0];
-            String paramValue = keyAndValue[1];
-            inputParams.put(paramType, paramValue);
+//        Pattern p = Pattern.compile(".\\/.+?(?=\\s.\\/.+)|.\\/.+");
+//        //Pattern p = Pattern.compile("\\w\\/");
+//        String test = paramsString;
+//        Matcher m = p.matcher(test);
+//        while (m.find()) {
+//            String[] keyAndValue = m.group().split("/");
+//            String paramType = keyAndValue[0];
+//            String paramValue = keyAndValue[1];
+//            if (inputParams.containsKey(keyAndValue[0])) {
+//                throw new DukeExceptions("multipleParams");
+//            }
+//            if (paramType.equals("p") || paramType.equals("t") || paramType.equals("m")){
+//                if (!paramValue.matches("\\d+")) {
+//                     throw new DukeExceptions("paramValueNotInteger");
+//                } else {
+//                    inputParams.put(paramType, paramValue);
+//                }
+//            } else {
+//                inputParams.put(paramType, paramValue);
+//            }
+//        }
+        String paramValue;
+        Pattern p;
+        Matcher m;
+        switch(taskType) {
+        case "select":
+        case "done":
+        case "delete":
+            paramValue = paramsString.split("[pt]\\/", 2)[1];
+            if (paramsString.split("/")[0].equals("p")) {
+                inputParams.put("p", paramValue);
+            } else {
+                inputParams.put("t", paramValue);
+            }
+            break;
+
+        case "project":
+        case "task":
+        case "member":
+            paramValue = paramsString.split("[n]\\/", 2)[1];
+            inputParams.put("n", paramValue);
+            break;
+
+        case "description":
+            p = Pattern.compile("([pt]\\/.+)([d]\\/.+)");
+            m = p.matcher(paramsString);
+            if (m.find()) {
+                if (m.group(1).split("/")[0].equals("p")) {
+                    inputParams.put("p", m.group(1).split("/")[1]);
+                } else if (m.group(1).split("/")[0].equals("t")) {
+                    inputParams.put("t", m.group(1).split("/")[1]);
+                } else {
+                    throw new DukeExceptions("paramValueIncorrect");
+                }
+
+                if (m.group(2).split("/")[0].equals("d")) {
+                    inputParams.put("d", m.group(2).split("/")[1]);
+                } else {
+                    throw new DukeExceptions("paramValueIncorrect");
+                }
+            }
+            break;
         }
+
+
+
         return inputParams;
     }
 
@@ -100,7 +157,7 @@ public class Parser {
         HashMap<String, String> params = new HashMap<>();
         if (inputs.length == 2) {
             String paramsString = inputs[1];
-            params = getParams(paramsString);
+            params = getParams(paramsString, taskType);
         }
 
         boolean isHomeView = (projectIndex == -1); //In main project list view

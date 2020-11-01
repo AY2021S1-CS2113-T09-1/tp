@@ -30,7 +30,7 @@ public class ProjectSelectCommand extends Command {
         try {
             projectIndex = Integer.parseInt(getHashValue(params, "p")) - 1;
         } catch (NumberFormatException e) {
-            throw new DukeExceptions("invalidProjectID");
+            throw new DukeExceptions("paramValueIncorrect");
         }
     }
 
