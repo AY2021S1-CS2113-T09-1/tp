@@ -19,23 +19,28 @@ public class ProjectDescriptionCommand extends Command {
     private int projectIndex;
     HashMap<String, String> params;
 
-    public ProjectDescriptionCommand(HashMap<String, String> params, int projectIndex) throws DukeExceptions {
+    public ProjectDescriptionCommand(HashMap<String, String> params) throws DukeExceptions {
         this.params = params;
-        this.projectIndex = projectIndex;
         this.parse();
     }
 
     public void parse() throws DukeExceptions {
         projectDescription = getHashValue(params, "d");
-        if (projectIndex == -1) {
+        try {
             projectIndex = Integer.parseInt(getHashValue(params, "p")) - 1;
+        } catch (NumberFormatException e) {
+            throw new DukeExceptions("paramValueIncorrect");
         }
     }
 
-    public String executeCommand(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) {
-        Project project = projects.get(projectIndex);
-        project.addDescription(projectDescription);
-        return Ui.printProjectDescriptionAddedMessage(project);
+    public String executeCommand(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) throws DukeExceptions {
+        try {
+            Project project = projects.get(projectIndex);
+            project.addDescription(projectDescription);
+            return Ui.printProjectDescriptionAddedMessage(project);
+        } catch (IndexOutOfBoundsException e) {
+            throw new DukeExceptions("invalidProjectID");
+        }
     }
 
     public Boolean isExit() {

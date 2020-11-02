@@ -40,8 +40,9 @@ public class ProjectDescriptionCommandTest {
 
     @Test
     void executeCommand_projectList_projectDescriptionAdded() throws DukeExceptions {
+        params.put("p", "2");
         params.put("d", "Do CS2113 Tutorial by today");
-        ProjectDescriptionCommand addDescription = new ProjectDescriptionCommand(params, 1);
+        ProjectDescriptionCommand addDescription = new ProjectDescriptionCommand(params);
         String actualOutput = addDescription.executeCommand(projects, teamMembers);
         String expectedOutput = "Project description added \"Do CS2113 Tutorial by today\".";
         assertEquals(expectedOutput, actualOutput);

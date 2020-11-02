@@ -94,6 +94,7 @@ public class Parser {
         case "select":
         case "done":
         case "delete":
+        case "remove":
             paramValue = paramsString.split("[pt]\\/", 2)[1];
             if (paramsString.split("/")[0].equals("p")) {
                 inputParams.put("p", paramValue);
@@ -110,28 +111,44 @@ public class Parser {
             break;
 
         case "description":
-            p = Pattern.compile("([pt]\\/.+)([d]\\/.+)");
-            m = p.matcher(paramsString);
-            if (m.find()) {
-                if (m.group(1).split("/")[0].equals("p")) {
-                    inputParams.put("p", m.group(1).split("/")[1]);
-                } else if (m.group(1).split("/")[0].equals("t")) {
-                    inputParams.put("t", m.group(1).split("/")[1]);
-                } else {
-                    throw new DukeExceptions("paramValueIncorrect");
-                }
+//            p = Pattern.compile("([pt]\\/\\d+)([d]\\/.+)");
+//            m = p.matcher(paramsString);
+//            if (m.find()) {
+//                if (m.group(1).split("/")[0].equals("p")) {
+//                    inputParams.put("p", m.group(1).split("/")[1]);
+//                } else if (m.group(1).split("/")[0].equals("t")) {
+//                    inputParams.put("t", m.group(1).split("/")[1]);
+//                } else {
+//                    throw new DukeExceptions("paramValueIncorrect");
+//                }
+//
+//                if (m.group(2).split("/")[0].equals("d")) {
+//                    inputParams.put("d", m.group(2).split("/")[1]);
+//                } else {
+//                    throw new DukeExceptions("paramValueIncorrect");
+//                }
+//            }
 
-                if (m.group(2).split("/")[0].equals("d")) {
-                    inputParams.put("d", m.group(2).split("/")[1]);
-                } else {
-                    throw new DukeExceptions("paramValueIncorrect");
-                }
+            String firstParam = paramsString.split(" ", 2)[0];
+            String secondParam = paramsString.split(" ", 2)[1];
+            if (firstParam.split("/")[0].equals("p")) {
+                inputParams.put("p", firstParam.split("[p]\\/",2)[1]);
+            } else if (firstParam.split("/")[0].equals("t")) {
+                inputParams.put("t", firstParam.split("[t]\\/", 2)[1]);
+            } else {
+                throw new DukeExceptions("paramValueIncorrect");
             }
+
+            if (secondParam.split("/")[0].equals("d")) {
+                inputParams.put("d", secondParam.split("[d]\\/", 2)[1]);
+            } else {
+                throw new DukeExceptions("paramValueIncorrect");
+            }
+
             break;
+
+
         }
-
-
-
         return inputParams;
     }
 
@@ -172,7 +189,10 @@ public class Parser {
                     ? new ProjectSelectCommand(params) : new TaskSelectCommand(params, projectIndex);
             break;
         case "description":
-            commandType = new ProjectDescriptionCommand(params, projectIndex);
+            if (!isHomeView) {
+                throw new DukeExceptions("mustBeInHomeView");
+            }
+            commandType = new ProjectDescriptionCommand(params);
             break;
         case "project":
             if (!isHomeView) {
