@@ -48,10 +48,10 @@ class TaskAssignPriorityCommandTest {
      */
     @Test
     void executeCommand_validPriorityAndTaskId_priorityAssignedToTask() throws DukeExceptions {
-        params.put("p", "1");
+        params.put("p", "3");
         params.put("t", "1");
         TaskAssignPriorityCommand command = new TaskAssignPriorityCommand(params, 0);
-        String expectedOutput = Ui.printPriorityAssignedToTaskMessage(1, "Task One");
+        String expectedOutput = Ui.printPriorityAssignedToTaskMessage(3, "Task One");
         String actualOutput = command.executeCommand(projects, teamMembers);
         assertEquals(expectedOutput, actualOutput);
     }

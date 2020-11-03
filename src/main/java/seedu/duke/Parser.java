@@ -25,6 +25,7 @@ import seedu.duke.commands.task.TaskDoneCommand;
 import seedu.duke.commands.task.ActualTimeCommand;
 import seedu.duke.commands.task.EstimatedTimeCommand;
 import seedu.duke.commands.task.TaskCommand;
+import seedu.duke.commands.task.TaskSortCommand;
 
 import seedu.duke.ui.Ui;
 import java.util.HashMap;
@@ -286,6 +287,12 @@ public class Parser {
                 throw new DukeExceptions("mustBeInProjectView");
             }
             commandType = new TaskAssignPriorityCommand(params, projectIndex);
+            break;
+        case "sort":
+            if (isHomeView) {
+                throw new DukeExceptions("mustBeInProjectView");
+            }
+            commandType = new TaskSortCommand(inputs[1],projectIndex);
             break;
         default: throw new DukeExceptions("default");
         }

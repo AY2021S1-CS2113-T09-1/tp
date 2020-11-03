@@ -31,7 +31,8 @@ public class ProjectDoneCommand extends Command {
 
     }
 
-    public String executeCommand(ArrayList<Project> projects, ArrayList<TeamMember> members) throws DukeExceptions {
+    public String executeCommand(ArrayList<Project> projects,
+                                 ArrayList<TeamMember> members) throws DukeExceptions {
         try {
             Project project = projects.get(projectIndex);
             project.markAsDone();

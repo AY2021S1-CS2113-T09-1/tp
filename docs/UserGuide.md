@@ -26,21 +26,23 @@ projects, tasks and team members all in one app.
         9. [Assigning a member to a project](#assigning-a-member-to-a-project-assign)
         10. [Removing a member](#removing-a-member-remove)
 4. [Project View](#project-view)
-    1. [Accessing Home View](#accessing-home-view)
+    1. [Accessing Project View](#accessing-project-view)
     2. [Commands](#project-view-commands)
         1. [Viewing the updated Project View](#viewing-the-updated-project-view-list)
         2. [Adding a task](#adding-a-task-task)
         3. [Selecting a task](#selecting-a-task-select)
         4. [Marking a task as done](#marking-a-task-as-done-done)
         5. [Adding a deadline to a task](#adding-a-deadline-to-a-task-deadline)
-        6. [Deleting a task](#deleting-a-task-delete)
-        7. [Assigning a member to a task](#assigning-a-member-to-a-task-assign)
-5. [FAQ](#faq)
-6. [Command Summary](#command-summary)
+        6. [Adding a priority to a task](#adding-a-priority-to-a-task-deadline)
+        7. [Deleting a task](#deleting-a-task-delete)
+        8. [Assigning a member to a task](#assigning-a-member-to-a-task-assign)
+5. [Exiting EZ Manager](#exiting-ez-manager)
+6. [FAQ](#faq)
+7. [Command Summary](#command-summary)
 
 ## Quick Start
 1. Ensure that you have Java 11 or above installed.
-1. Download the latest version of `EZ Manager` from [here](http://link.to/duke).
+1. Download the latest version of `EZ Manager` from [here](https://github.com/AY2021S1-CS2113T-T09-1/tp/releases).
 1. Copy the JAR  file into an empty new folder. Take note of the file path
 1. Open Command Prompt (on Windows) or Terminal (on Mac) and type
 java -jar {file path}/ezManager.jar
@@ -199,7 +201,7 @@ a member to a project.
 
 Example of usage: 
 
-* `assing p/1 m/1`. Assigns the first member in the member list
+* `assign p/1 m/1`. Assigns the first member in the member list
 to the first project in the project list
 
 ### Removing a member: `remove`
@@ -294,6 +296,23 @@ Example of usage:
 * `deadline t/1 d/2020-10-25`. Adds the deadline 25/10/2020
 to the first task in the task list.
 
+### Adding a priority to a task: `priority`
+Adds a priority to an existing task.
+1 denotes the highest priority.
+
+Format: `priority t/TASK_INDEX p/PRIORITY`
+
+* The `TASK_INDEX` must be a positive integer.
+* The task must exist before a deadline can be added.
+* The `PRIORITY` must be a positive interger.
+* You must be in ProjectView before adding a deadline
+to a task.  
+
+Example of usage: 
+
+* `priority t/1 p/1`. Adds the highest priority, 1,
+to the first task in the task list.
+
 ### Deleting a task: `delete`
 Deletes a task from the task list.
 
@@ -321,8 +340,13 @@ a member to a task.
 
 Example of usage: 
 
-* `assing t/1 m/1`. Assigns the first member in the member list
+* `assign t/1 m/1`. Assigns the first member in the member list
 to the first task in the task list
+
+### Exiting Ez Manager: `bye`
+You can exit the program with the `bye` command.
+
+Format: `bye`
 
 ## FAQ
 
@@ -334,8 +358,8 @@ to the first task in the task list
 
 | Commands | Action | Examples |
 | -------- | ------ | -------- |
-| project | Creates a new project in the project list | `project n/Web Development Project` |
-| task    | Creates a new task in the task list | `task n/Deploy Version 2.0` |
+| project | Creates a new project in the project list in Home View | `project n/Web Development Project` |
+| task    | Creates a new task in the task list in Project View| `task n/Deploy Version 2.0` |
 | member  | Creates a new member in the member list | `member n/John Doe` |
 | list    | If in Home View, displays the updated Home View | `list` |  
 | list    | If in Project View, displays the updated Project View | `list` |

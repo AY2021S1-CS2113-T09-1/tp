@@ -27,12 +27,17 @@ public class Project implements Comparable<Project> {
         this.projectDeadline = null;
     }
 
-    @Override
+
+    public void sortTasksList() {
+        //Collections.sort(tasks);
+    }
+
     public int compareTo(Project project) {
         if (getProjectDeadline() == null || project.getProjectDeadline() == null) {
             return 0;
         }
         return getProjectDeadline().compareTo(project.getProjectDeadline());
+
     }
 
     public Task getTask(int taskIndex) {

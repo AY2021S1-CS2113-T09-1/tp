@@ -7,6 +7,7 @@ import seedu.duke.task.Task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Ui {
 
@@ -65,10 +66,17 @@ public class Ui {
     }
 
     public static String printTaskListMessage(Project project) {
+
+        project.sortTasksList();
         int numberOfTasks = project.getTaskList().size();
+
         String output = "List of Tasks:";
+
         for (int i = 0; i < numberOfTasks; i++) {
-            output += "\n     " + (i + 1) + "." + project.getTask(i);
+
+            output += "\n     " + (i + 1) + "." + project.getTask(i)
+                    + ((project.getTask(i).getPriority() != 0) ? "|"
+                    + "priority: " + project.getTask(i).getPriority() : "");
         }
         return output;
     }

@@ -21,7 +21,7 @@ public class Task {
     protected LocalDate date;
     protected ArrayList<TeamMember> members = new ArrayList<>();
     protected int estimateInMinutes = 0;
-    protected int actualInMinutes = 0;
+    protected int actualInMinutes;
     protected int priority;
 
     public int getPriority() {
@@ -35,6 +35,9 @@ public class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.date = null;
+        this.priority = 0;
+        actualInMinutes = 0;
     }
 
     public void addDeadline(LocalDate date) {
@@ -67,6 +70,11 @@ public class Task {
 
     public String getDateString() {
         return (date != null) ? date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "";
+    }
+
+
+    public LocalDate getDeadline() {
+        return this.date;
     }
 
     public ArrayList<TeamMember> getMembers() {
@@ -116,4 +124,6 @@ public class Task {
             return false;
         }
     }
+
+
 }
