@@ -29,7 +29,7 @@ public class AssignMemberToProjectCommand extends Command {
                 projectIndex = Integer.parseInt(getHashValue(paramsList,"p")) - 1;
                 memberIndex = Integer.parseInt(getHashValue(paramsList,"m")) - 1;
             } catch (NumberFormatException e) {
-                throw new DukeExceptions("indexNonInteger");
+                throw new DukeExceptions("paramValueIncorrect");
             }
         } else {
             throw new DukeExceptions("default");

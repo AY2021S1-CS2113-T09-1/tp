@@ -42,7 +42,13 @@ public class DukeExceptions extends Exception {
         exceptionMessageList.put("multipleParams",
                 "Multiple parameters detected! Please enter command in the correct format");
         exceptionMessageList.put("paramValueIncorrect","Please only provide appropriate parameters!"
-                        + " e.g p/<positive integer> t/<positive integer>");
+                        + " e.g p/<positive integer> OR t/<positive integer> OR m/<positive integer>");
+        exceptionMessageList.put("paramValueIncorrectForNaming","Please only provide appropriate parameters!"
+                + " e.g n/<name of project, task or member>");
+        exceptionMessageList.put("paramValueIncorrectForDescription","Please only provide appropriate parameters!"
+                + " e.g p/<positive integer> d/<description / YYYY-MM-DD>");
+        exceptionMessageList.put("paramValueIncorrectForAssign","Please only provide appropriate parameters!\n"
+                + "e.g p/<positive integer> m/<positive integer> OR t/<positive integer> m/<positive integer>");
     }
 
     public String toString() {
