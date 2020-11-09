@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.time.Period;
 import static seedu.ezmanager.util.Util.MINUTES_IN_HOUR_DOUBLE;
 
+/**
+ * Text UI of the application.
+ */
 public class Ui {
 
     private static final String MESSAGE_SINGLE_LINE = "_________________________________________"
@@ -26,6 +29,9 @@ public class Ui {
             + "                                                               ____| |\n"
             + "                                                              |______|\n";
 
+    /**
+     * Print welcome message together with EzManage Logo.
+     */
     public void printWelcome() {
         System.out.println(MESSAGE_SINGLE_LINE);
         System.out.println(MESSAGE_LOGO);
@@ -33,44 +39,64 @@ public class Ui {
         System.out.println(MESSAGE_SINGLE_LINE);
     }
 
+    /**
+     * Print goodbye message.
+     * @return Goodbye message String.
+     */
     public static String printGoodbyeMessage() {
         return MESSAGE_GOODBYE;
     }
 
+    /**
+     * Print a String of lines to separate commands and outputs.
+     */
     public void printLine() {
         System.out.println(MESSAGE_SINGLE_LINE);
     }
 
+    /**
+     * Print the output after every execution of command.
+     * @param output String of output messages after every execution of command.
+     */
     public static void printOutput(String output) {
         System.out.println(output);
     }
 
+    /**
+     * Return member added message.
+     * @param name Name of added member.
+     * @return String of member added message.
+     */
     public static String printMemberAddedMessage(String name) {
         return "Team member \"" + name + "\" has been added";
     }
 
+    /**
+     * Return member in home view removed message.
+     * @param name Name of removed member.
+     * @return String of member in home view being removed message.
+     */
     public static String printMemberRemovedInHomeViewMessage(String name) {
         return "Team member \"" + name + "\" has been removed from program entirely";
     }
 
+    /**
+     * Return member in project view removed message.
+     * @param name Name of removed member.
+     * @param projectName Name of project that member is removed from.
+     * @return String of member in project view being removed message.
+     */
     public static String printMemberRemovedInProjectViewMessage(String name, String projectName) {
         return "Team member \"" + name + "\" has been removed from Project \"" + projectName + "\"";
     }
 
+    /**
+     * Return project deleted message.
+     * @param project Removed Project object.
+     * @return String of project being deleted message.
+     */
     public static String printProjectDeletedMessage(Project project) {
         return "Project \"" + project.getProjectName() + "\" deleted";
-    }
-
-    public static String printProjectListMessage(ArrayList<Project> projects) {
-        String output = "";
-        output += "List of Projects:";
-        for (int i = 0; i < projects.size(); i++) {
-            output += "\n     " + (i + 1) + "." + projects.get(i).getProjectName();
-            if (projects.get(i).getProjectDeadline() != null) {
-                output += " (" + projects.get(i).getProjectDeadline() + ") ";
-            }
-        }
-        return output;
     }
 
     public static String printTaskListMessage(Project project) {
@@ -90,18 +116,42 @@ public class Ui {
         return output;
     }
 
+    /**
+     * Return project created message.
+     * @param projectName Name of specified project.
+     * @return String of project being created message.
+     */
     public static String printProjectCreatedMessage(String projectName) {
         return "Project \"" + projectName + "\" created!";
     }
 
+    /**
+     * Return project description added message.
+     * @param project Specified Project object.
+     * @return String of project description being added message.
+     */
     public static String printProjectDescriptionAddedMessage(Project project) {
         return "Project description added \"" + project.getDescription() + "\".";
     }
 
+    /**
+     * Return project marked as done message.
+     * @param projectName Name of specified project that is marked as done.
+     * @return String of project marked as done message.
+     */
     public static String printProjectDoneMessage(String projectName) {
         return "Project \"" + projectName + "\" is done!";
     }
 
+    /**
+     * Return project deadline added message as well as newly sorted home view.
+     * @param projects ArrayList of Projects.
+     * @param project Specified Project object that has deadline to be added.
+     * @param date deadline of specified project to be added.
+     * @param members ArrayList of TeamMembers in the program.
+     * @return String of project deadline being added message as well as
+     *     newly sorted home view display.
+     */
     public static String printProjectDeadlineAddedMessage(ArrayList<Project> projects, Project project,
                                                           LocalDate date, ArrayList<TeamMember> members) {
         String output =  "Deadline " + date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
@@ -110,27 +160,56 @@ public class Ui {
         return output;
     }
 
+    /**
+     * Return task created message.
+     * @param taskName Name of added task.
+     * @return String of task created message.
+     */
     public static String printTaskCreatedMessage(String taskName) {
         return "Task \"" + taskName + "\" created!";
     }
 
+    /**
+     * Return estimated time added to task message.
+     * @param taskName Name of task with estimated time to be added.
+     * @param hours Hours part of estimated time.
+     * @param minutes Minutes part of estimated time.
+     * @return String of estimated time being added to task message.
+     */
     public static String printEstimateAddedMessage(String taskName, int hours, int minutes) {
         return "Task \"" + taskName + "\" has estimated time of " + hours + " hours and " + minutes + " minutes";
     }
 
+    /**
+     * Return actual time added to task message.
+     * @param taskName Name of task with actual time to be added.
+     * @param hours Hours part of actual time.
+     * @param minutes Minutes part of actual time.
+     * @return String of actual time being added to task message.
+     */
     public static String printActualDurationAddedMessage(String taskName, int hours, int minutes) {
         return "Task \"" + taskName + "\" took " + hours + " hours and " + minutes + " minutes to be completed.";
     }
 
+    /**
+     * Return task marked as done message.
+     * @param taskName Name of specified task that is marked as done.
+     * @return String of task being marked as done message.
+     */
     public static String printTaskDoneMessage(String taskName) {
         return "Task \"" + taskName + "\" is done!";
     }
 
+    /**
+     * Retunr task deleted message.
+     * @param taskName Name of removed task.
+     * @return String of task being deleted message.
+     */
     public static String printTaskDeletedMessage(String taskName) {
         return "Task \"" + taskName + "\" removed!";
     }
 
-    public static String printHomeView(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) {
+    private static String printProjectListHeadingInHomeView() {
         String output = "EZ Manager Home View\n";
         output += "\n ----------------------";
         output += "\n| PROJECT LIST         |";
@@ -139,6 +218,11 @@ public class Ui {
                 + "Deadline     Tasks Completed     Remarks";
         output += "\n---------------------------------------------------------------------------"
                 + "---------------------------------------------------------------------------";
+        return output;
+    }
+
+    private static String printProjectListInHomeView(ArrayList<Project> projects) {
+        String output = "";
         int projectIndex = 1;
         String paddedProjectIndex;
         String paddedProjectStatus;
@@ -146,137 +230,228 @@ public class Ui {
         String paddedProjectDescription;
         String paddedProjectDeadline;
         String paddedTaskCompleted;
+        String remarks;
         for (Project project : projects) {
             paddedProjectIndex = String.format("%-8s", projectIndex + ".");
-            String projectStatus;
-            if (project.isProjectDone()) {
-                projectStatus = "Y";
-            } else {
-                projectStatus = "N";
-            }
-            paddedProjectStatus = String.format("%-9s", projectStatus);
-            String projectName = project.getProjectName();
-            if (projectName.length() >= 25) {
-                projectName = projectName.substring(0, 21) + "...";
-            }
-            paddedProjectName = String.format("%-25s", projectName);
-            if (!project.getDescription().equals("<project description empty>")) {
-                String projectDescription = project.getDescription();
-                if (projectDescription.length() >= 35) {
-                    projectDescription = projectDescription.substring(0, 31) + "...";
-                }
-                paddedProjectDescription = String.format("%-35s", projectDescription);
-            } else {
-                paddedProjectDescription = String.format("%-35s", "-");
-            }
-            if (project.getProjectDeadline() != null) {
-                String projectDeadline = project.getProjectDeadline().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                paddedProjectDeadline = String.format("%-13s", projectDeadline);
-            } else {
-                paddedProjectDeadline = String.format("%-13s", "-");
-            }
-            String taskCompleted = project.getNumberOfFinishedTask() + "/"
-                    + project.getNumberOfTask();
-            paddedTaskCompleted = String.format("%-20s", taskCompleted);
-            String remarks = "-";
-            LocalDate dateOfTaskWithNearestDeadline = null;
-            Task taskWithNearestDeadline = null;
-            if (!project.getTaskList().isEmpty()) {
-                ArrayList<Task> tasks = project.getTaskList();
-                for (Task task : tasks) {
-                    LocalDate deadlineOfTask = task.getDeadline();
-                    if (deadlineOfTask == null) {
-                        continue;
-                    } else if (dateOfTaskWithNearestDeadline == null) {
-                        dateOfTaskWithNearestDeadline = deadlineOfTask;
-                        taskWithNearestDeadline = task;
-                    } else if (deadlineOfTask.compareTo(dateOfTaskWithNearestDeadline) < 0) {
-                        dateOfTaskWithNearestDeadline = deadlineOfTask;
-                        taskWithNearestDeadline = task;
-                    }
-                }
-                LocalDate currentDate = LocalDate.now();
-                if (dateOfTaskWithNearestDeadline != null && !taskWithNearestDeadline.getStatus()) {
-                    //find the difference in the number of days from current days to deadline
-                    Period period = Period.between(currentDate, dateOfTaskWithNearestDeadline);
-                    if (period.getDays() <= 5 && period.getMonths() == 0 && period.getYears() == 0) {
-                        remarks = "!!!WARNING!!! Task \"" + taskWithNearestDeadline.getDescription()
-                                + "\" has " + period.getDays() + " day(s) before deadline and still not done!!";
-                    } else {
-                        remarks = "Task \"" + taskWithNearestDeadline.getDescription()
-                                + "\" has an upcoming deadline at " + taskWithNearestDeadline.getDateString()
-                                + " and still not done!!";
-                    }
-                }
-            }
+            paddedProjectStatus = printProjectStatusInHomeView(project);
+            paddedProjectName = printProjectNameInHomeView(project);
+            paddedProjectDescription = printProjectDescriptionInHomeView(project);
+            paddedProjectDeadline = printProjectDeadlineInHomeView(project);
+            paddedTaskCompleted = printTaskCompletedInProjectInHomeView(project);
+            remarks = printRemarksInHomeView(project);
             output += "\n" + paddedProjectIndex + paddedProjectStatus + paddedProjectName + paddedProjectDescription
                     + paddedProjectDeadline + paddedTaskCompleted + remarks;
             projectIndex++;
         }
-        output += "\n\n ----------------------";
+        return output;
+    }
+
+    private static String printProjectStatusInHomeView(Project project) {
+        String projectStatus;
+        if (project.isProjectDone()) {
+            projectStatus = "Y";
+        } else {
+            projectStatus = "N";
+        }
+        String paddedProjectStatus = String.format("%-9s", projectStatus);
+        return paddedProjectStatus;
+    }
+
+    private static String printProjectNameInHomeView(Project project) {
+        String projectName = project.getProjectName();
+        if (projectName.length() >= 25) {
+            projectName = projectName.substring(0, 21) + "...";
+        }
+        String paddedProjectName = String.format("%-25s", projectName);
+        return paddedProjectName;
+    }
+
+    private static String printProjectDescriptionInHomeView(Project project) {
+        String paddedProjectDescription;
+        if (!project.getDescription().equals("<project description empty>")) {
+            String projectDescription = project.getDescription();
+            if (projectDescription.length() >= 35) {
+                projectDescription = projectDescription.substring(0, 31) + "...";
+            }
+            paddedProjectDescription = String.format("%-35s", projectDescription);
+        } else {
+            paddedProjectDescription = String.format("%-35s", "-");
+        }
+        return paddedProjectDescription;
+    }
+
+    private static String printProjectDeadlineInHomeView(Project project) {
+        String paddedProjectDeadline;
+        if (project.getProjectDeadline() != null) {
+            String projectDeadline = project.getProjectDeadline().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            paddedProjectDeadline = String.format("%-13s", projectDeadline);
+        } else {
+            paddedProjectDeadline = String.format("%-13s", "-");
+        }
+        return paddedProjectDeadline;
+    }
+
+    private static String printTaskCompletedInProjectInHomeView(Project project) {
+        String taskCompleted = project.getNumberOfFinishedTask() + "/"
+                + project.getNumberOfTask();
+        String paddedTaskCompleted = String.format("%-20s", taskCompleted);
+        return paddedTaskCompleted;
+    }
+
+    private static String printRemarksInHomeView(Project project) {
+        String remarks = "-";
+        LocalDate dateOfTaskWithNearestDeadline = null;
+        Task taskWithNearestDeadline = null;
+        if (!project.getTaskList().isEmpty()) {
+            ArrayList<Task> tasks = project.getTaskList();
+            taskWithNearestDeadline = checkForTaskWithNearestDeadline(tasks);
+            if (taskWithNearestDeadline != null) {
+                dateOfTaskWithNearestDeadline = taskWithNearestDeadline.getDeadline();
+            }
+            LocalDate currentDate = LocalDate.now();
+            if (dateOfTaskWithNearestDeadline != null && !taskWithNearestDeadline.getStatus()) {
+                //find the difference in the number of days from current days to deadline
+                Period period = Period.between(currentDate, dateOfTaskWithNearestDeadline);
+                if (period.getDays() <= 5 && period.getMonths() == 0 && period.getYears() == 0) {
+                    remarks = "!!!WARNING!!! Task \"" + taskWithNearestDeadline.getDescription()
+                            + "\" has " + period.getDays() + " day(s) before deadline and still not done!!";
+                } else {
+                    remarks = "Task \"" + taskWithNearestDeadline.getDescription()
+                            + "\" has an upcoming deadline at " + taskWithNearestDeadline.getDateString()
+                            + " and still not done!!";
+                }
+            }
+        }
+        return remarks;
+    }
+
+    private static Task checkForTaskWithNearestDeadline(ArrayList<Task> tasks) {
+        LocalDate dateOfTaskWithNearestDeadline = null;
+        Task taskWithNearestDeadline = null;
+        for (Task task : tasks) {
+            LocalDate deadlineOfTask = task.getDeadline();
+            if (deadlineOfTask == null) {
+                continue;
+            } else if (dateOfTaskWithNearestDeadline == null) {
+                dateOfTaskWithNearestDeadline = deadlineOfTask;
+                taskWithNearestDeadline = task;
+            } else if (deadlineOfTask.compareTo(dateOfTaskWithNearestDeadline) < 0) {
+                dateOfTaskWithNearestDeadline = deadlineOfTask;
+                taskWithNearestDeadline = task;
+            }
+        }
+        return taskWithNearestDeadline;
+    }
+
+    private static String printMemberListHeadingInHomeView() {
+        String output = "\n\n ----------------------";
         output += "\n| MEMBERS LIST         |";
         output += "\n ----------------------\n";
         output += "\nIndex   Member Name                   Projects Involved        Hours spent across tasks";
         output += "\n---------------------------------------------------------------------------------------";
+        return output;
+    }
+
+    private static String printMemberListInHomeView(ArrayList<TeamMember> teamMembers) {
+        String output = "";
         int memberIndex = 1;
         for (TeamMember member : teamMembers) {
             String paddedMemberIndex = String.format("%-8s", memberIndex + ".");
-            String memberName = member.getName();
-            if (member.getName().length() >= 30) {
-                memberName = member.getName().substring(0, 26) + "...";
-            }
-            String paddedMemberName = String.format("%-30s", memberName);
-            output += "\n" + paddedMemberIndex + paddedMemberName;
-            double hoursWorked = 0;
-            for (int i = 0; i < member.getTasks().size(); i++) {
-                Task task = member.getTasks().get(i);
-                hoursWorked += task.getActual() / MINUTES_IN_HOUR_DOUBLE;
-            }
-            if (!member.getAssignedProjects().isEmpty()) {
-                for (int i = 0; i < member.getAssignedProjects().size(); i++) {
-                    String assignedProjectName = member.getAssignedProjects().get(i).getProjectName();
-                    if (assignedProjectName.length() >= 25) {
-                        assignedProjectName = assignedProjectName.substring(0, 18) + "...";
-                    }
-                    paddedProjectName = String.format("%-22s", assignedProjectName);
-
-                    if (i == 0) {
-                        output += "1. " + paddedProjectName + hoursWorked;
-                    } else {
-                        output += "\n                                      "
-                                + (i + 1) + ". " + paddedProjectName;
-                    }
-                }
-            } else {
-                output += String.format("%-25s", "-") + hoursWorked;
-            }
+            String paddedMemberName = printMemberNameInHomeView(member);
+            output += "\n" + paddedMemberIndex + paddedMemberName
+                    + printMemberAssignedProjectsInHomeView(member);
             output += System.lineSeparator();
             memberIndex++;
         }
         return output;
     }
 
-    public static String printTaskSelectedMessage(String taskName) {
-        return "Selected Task: " + taskName;
+    private static String printMemberNameInHomeView(TeamMember member) {
+        String memberName = member.getName();
+        if (member.getName().length() >= 30) {
+            memberName = member.getName().substring(0, 26) + "...";
+        }
+        String paddedMemberName = String.format("%-30s", memberName);
+        return paddedMemberName;
     }
 
+    private static String printMemberAssignedProjectsInHomeView(TeamMember member) {
+        String output = "";
+        double hoursWorked = 0;
+        String paddedProjectName;
+        hoursWorked = hoursWorkedByMembers(member);
+        if (!member.getAssignedProjects().isEmpty()) {
+            for (int i = 0; i < member.getAssignedProjects().size(); i++) {
+                String assignedProjectName = member.getAssignedProjects().get(i).getProjectName();
+                if (assignedProjectName.length() >= 25) {
+                    assignedProjectName = assignedProjectName.substring(0, 18) + "...";
+                }
+                paddedProjectName = String.format("%-22s", assignedProjectName);
+
+                if (i == 0) {
+                    output += "1. " + paddedProjectName + hoursWorked;
+                } else {
+                    output += "\n                                      "
+                            + (i + 1) + ". " + paddedProjectName;
+                }
+            }
+        } else {
+            output += String.format("%-25s", "-") + hoursWorked;
+        }
+        return output;
+    }
+
+    private static double hoursWorkedByMembers(TeamMember member) {
+        double hoursWorked = 0;
+        for (int i = 0; i < member.getTasks().size(); i++) {
+            Task task = member.getTasks().get(i);
+            hoursWorked += task.getActual() / MINUTES_IN_HOUR_DOUBLE;
+        }
+        return hoursWorked;
+    }
+
+    /**
+     * Returns the home view display which consists of a project list and a member list.
+     * Additional information such as project description, project deadline, remarks
+     * and member's assigned project will also be displayed.
+     * @param projects ArrayList of Projects.
+     * @param teamMembers ArrayList of TeamMembers in the program.
+     * @return Home view display
+     */
+    public static String printHomeView(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) {
+        String output = printProjectListHeadingInHomeView();
+        output += printProjectListInHomeView(projects);
+        output += printMemberListHeadingInHomeView();
+        output += printMemberListInHomeView(teamMembers);
+        return output;
+    }
+
+    /**
+     * Return task deadline added message.
+     * @param date deadline of specified project to be added.
+     * @param taskName Name of specified task with deadline to be added.
+     * @return String of task deadline being added message.
+     */
     public static String printTaskDeadlineMessage(LocalDate date, String taskName) {
         return "Deadline " + date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                 + " added to Task " + taskName;
     }
 
+    /**
+     * Return task name updated message.
+     * @param oldTaskName previous task name.
+     * @param newTaskName new task name to be updated.
+     * @return String of task name being updated message.
+     */
     public static String printTaskNameUpdatedMessage(String oldTaskName, String newTaskName) {
         return "Task " + "\"" + oldTaskName + "\" has been updated to \"" + newTaskName + "\"";
     }
 
-    public static String printInHomeViewMessage() {
-        return "Already in Home View!";
-    }
-
-    public static String printSwitchedToHomeViewMessage() {
-        return "Switched to Home View";
-    }
-
+    /**
+     * Returns the project view display.
+     * @param project Specified Project object that we are currently in.
+     * @return Project View Display
+     */
     public static String projectViewMessage(Project project) {
         try {
             String projectTitle = "Project \"" + project.getProjectName() + "\"";
@@ -394,7 +569,7 @@ public class Ui {
                 - estimateString.length()));
         return currentTaskLine;
     }
-    
+
     private static String priorityForTask(String prioritySpaces, String currentTaskLine, Task currentTask) {
         String priority = String.valueOf(currentTask.getPriority());
         if (!priority.equals("0")) {
@@ -453,18 +628,42 @@ public class Ui {
         return description;
     }
 
+    /**
+     * Return member assigned to task message.
+     * @param memberName Name of member to be assigned.
+     * @param taskName Name of task assigned to member.
+     * @return String of member being assigned to task message.
+     */
     public static String printMemberAssignedToTaskMessage(String memberName, String taskName) {
         return "Member \"" + memberName + "\" has been assigned to \"" + taskName + "\"";
     }
 
+    /**
+     * Return member assigned to project message.
+     * @param memberName Name of member to be assigned.
+     * @param projectName Name of project assigned to member.
+     * @return String of member being assigned to project message.
+     */
     public static String printMemberAssignedToProjectMessage(String memberName, String projectName) {
         return memberName + " assigned to Project \"" + projectName + "\"";
     }
 
+    /**
+     * Return priority assigned to task message.
+     * @param priority Priority to be added.
+     * @param taskName Name of task with priority to be added.
+     * @return String of priority being assigned to task message.
+     */
     public static String printPriorityAssignedToTaskMessage(int priority, String taskName) {
         return "Priority \"" + priority + "\" has been assigned to \"" + taskName + "\"";
     }
 
+    /**
+     * Return total hours worked by specified member in each tasks of every project.
+     * @param memberName Name of specified member.
+     * @param hoursWorked total hours worked by member.
+     * @return String of total hours worked by specified member.
+     */
     public static String printHoursWorkedMessage(String memberName, double hoursWorked) {
         return memberName + " worked for " + String.format("%.1f", hoursWorked) + " hours.";
     }

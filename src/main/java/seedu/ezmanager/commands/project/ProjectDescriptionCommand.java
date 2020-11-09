@@ -11,6 +11,9 @@ import java.util.HashMap;
 
 import static seedu.ezmanager.parser.Parser.getHashValue;
 
+/**
+ * Adds a project description to a specified Project object.
+ */
 public class ProjectDescriptionCommand extends Command {
 
     private String projectDescription;
@@ -22,6 +25,11 @@ public class ProjectDescriptionCommand extends Command {
         this.parse();
     }
 
+    /**
+     * Parse user parameter inputs for execution.
+     *
+     * @throws EzExceptions Invalid index when parameter values entered is not an integer.
+     */
     public void parse() throws EzExceptions {
         projectDescription = getHashValue(params, "d");
         try {
@@ -31,6 +39,17 @@ public class ProjectDescriptionCommand extends Command {
         }
     }
 
+
+    /**
+     * Add project description to specified Project object.
+     * Print project description added message.
+     *
+     * @param projects ArrayList of Projects.
+     * @param teamMembers ArrayList of TeamMembers in the program.
+     * @return Print project description added message.
+     * @throws EzExceptions Invalid Project ID if when parameter values provided is outside
+     *     the range of the Project list.
+     */
     public String executeCommand(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) throws EzExceptions {
         try {
             Project project = projects.get(projectIndex);

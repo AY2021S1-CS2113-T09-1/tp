@@ -16,6 +16,9 @@ import static seedu.ezmanager.util.Util.MEMBER_INDEX_KEY;
 import static seedu.ezmanager.util.Util.MINUTES_IN_HOUR_DOUBLE;
 import static seedu.ezmanager.util.Util.USER_JAVA_INDEX_DIFF;
 
+/**
+ * Calculate total number of hours worked by specified member for all tasks in every project.
+ */
 public class TeamMemberHoursCommand extends Command {
 
     private int memberIndex;
@@ -28,6 +31,11 @@ public class TeamMemberHoursCommand extends Command {
         this.parse();
     }
 
+    /**
+     * Parse user parameter inputs for execution.
+     *
+     * @throws EzExceptions Invalid index when parameter values entered is not an integer.
+     */
     public void parse() throws EzExceptions {
         try {
             memberIndex = Integer.parseInt(getHashValue(params, MEMBER_INDEX_KEY)) - USER_JAVA_INDEX_DIFF;
@@ -36,6 +44,15 @@ public class TeamMemberHoursCommand extends Command {
         }
     }
 
+    /**
+     * Calculates the total hours worked by specified TeamMember for every tasks in every project.
+     * Prints total hours worked by members.
+     *
+     * @param projects ArrayList of Projects.
+     * @param members ArrayList of TeamMembers in the program.
+     * @return Print total hours worked by members message.
+     * @throws EzExceptions if TeamMember ID provided is outside the range of the TeamMembers list
+     */
     public String executeCommand(ArrayList<Project> projects, ArrayList<TeamMember> members) throws EzExceptions {
         try {
             double hoursWorked = 0;

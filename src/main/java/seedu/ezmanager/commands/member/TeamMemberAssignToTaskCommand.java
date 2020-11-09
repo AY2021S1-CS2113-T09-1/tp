@@ -12,6 +12,9 @@ import java.util.HashMap;
 
 import static seedu.ezmanager.parser.Parser.getHashValue;
 
+/**
+ * Assign TeamMember object to Task object.
+ */
 public class TeamMemberAssignToTaskCommand extends Command {
 
     private int taskIndex;
@@ -26,19 +29,33 @@ public class TeamMemberAssignToTaskCommand extends Command {
         this.parse();
     }
 
+    /**
+     * Parse user parameter inputs for execution.
+     *
+     * @throws EzExceptions Invalid index when parameter values entered is not an integer.
+     */
     public void parse() throws EzExceptions {
         try {
             taskIndex = Integer.parseInt(getHashValue(params, "t")) - 1;
-        } catch (NumberFormatException e) {
-            throw new EzExceptions("invalidTaskID");
-        }
-        try {
             memberIndex = Integer.parseInt(getHashValue(params, "m")) - 1;
         } catch (NumberFormatException e) {
-            throw new EzExceptions("invalidTeamMemberID");
+            throw new EzExceptions("indexNonInteger");
         }
     }
 
+    /**
+     * Assign specified member to specified task.
+     * 1. Adds Task to ArrayList of Task in specified TeamMember.
+     * 2. Adds TeamMember to ArrayList of TeamMember in specified Task.
+     * 3. Prints member assigned to task message.
+     *
+     * @param projects ArrayList of Projects.
+     * @param teamMembers ArrayList of TeamMembers in the program.
+     * @return Print member assigned to task message.
+     * @throws EzExceptions Empty Task list if the list is empty or
+     *     Invalid Task ID if when parameter values provided is outside
+     *     the range of the Task list.
+     */
     public String executeCommand(ArrayList<Project> projects,
                                  ArrayList<TeamMember> teamMembers) throws EzExceptions {
         Task selectedTask;

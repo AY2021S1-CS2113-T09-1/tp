@@ -11,6 +11,9 @@ import java.util.HashMap;
 
 import static seedu.ezmanager.parser.Parser.getHashValue;
 
+/**
+ * Add a new TeamMember object to the program.
+ */
 public class TeamMemberAddCommand extends Command {
 
     private String name;
@@ -21,10 +24,23 @@ public class TeamMemberAddCommand extends Command {
         this.parse();
     }
 
+    /**
+     * Parse user parameter inputs for execution.
+     *
+     * @throws EzExceptions if there are missing parameter values.
+     */
     public void parse() throws EzExceptions {
         name = getHashValue(params, "n");
     }
 
+    /**
+     * Adds a new TeamMember object to the ArrayList of TeamMember in the program.
+     * Prints member added message.
+     *
+     * @param projects ArrayList of Projects.
+     * @param teamMembers ArrayList of TeamMembers in the program.
+     * @return Print member added message.
+     */
     public String executeCommand(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) {
         TeamMember newMember = new TeamMember(name);
         teamMembers.add(newMember);

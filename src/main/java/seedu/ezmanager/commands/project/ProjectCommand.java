@@ -11,6 +11,9 @@ import java.util.HashMap;
 
 import static seedu.ezmanager.parser.Parser.getHashValue;
 
+/**
+ * Add a new Project object to the program.
+ */
 public class ProjectCommand extends Command {
 
     private String description;
@@ -25,7 +28,16 @@ public class ProjectCommand extends Command {
         this.description = getHashValue(params, "n");
     }
 
+    /**
+     * Adds a new Project object into the ArrayList of Projects.
+     * Prints project created message.
+     *
+     * @param projects ArrayList of Projects.
+     * @param teamMembers ArrayList of TeamMembers in the program.
+     * @return Prints project created message.
+     */
     public String executeCommand(ArrayList<Project> projects, ArrayList<TeamMember> teamMembers) {
+        assert description != null : "description should not be null";
         Project newProject = new Project(description);
         projects.add(newProject);
         return Ui.printProjectCreatedMessage(newProject.getProjectName());

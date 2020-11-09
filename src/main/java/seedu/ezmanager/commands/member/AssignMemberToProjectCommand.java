@@ -21,6 +21,9 @@ import static seedu.ezmanager.util.Util.USER_JAVA_INDEX_DIFF;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * Assign TeamMember object to Project object.
+ */
 public class AssignMemberToProjectCommand extends Command {
     private int memberIndex;
     private int projectIndex;
@@ -33,6 +36,11 @@ public class AssignMemberToProjectCommand extends Command {
         parse();
     }
 
+    /**
+     * Parse user parameter inputs for execution.
+     *
+     * @throws EzExceptions Invalid index when parameter values entered is not an integer.
+     */
     public void parse() throws EzExceptions {
         try {
             projectIndex = Integer.parseInt(getHashValue(paramsList, PROJECT_INDEX_KEY)) - USER_JAVA_INDEX_DIFF;
@@ -43,6 +51,18 @@ public class AssignMemberToProjectCommand extends Command {
         }
     }
 
+    /**
+     * Assign specified member to specified project.
+     * 1. Add TeamMember object to ArrayList of TeamMember in specified Project.
+     * 2. Add Project object to ArrayList of Project in specified TeamMember.
+     * 3. Prints member assigned to project message.
+     *
+     * @param projects ArrayList of Projects.
+     * @param teamMembers ArrayList of TeamMembers in the program.
+     * @return Print member assigned to project message.
+     * @throws EzExceptions Invalid TeamMember ID if when parameter values provided is outside
+     *     the range of the TeamMember list.
+     */
     @Override
     public String executeCommand(ArrayList<Project> projects,
                                  ArrayList<TeamMember> teamMembers) throws EzExceptions {
