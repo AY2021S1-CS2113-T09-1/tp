@@ -1,4 +1,4 @@
-package seedu.ezmanager;
+package seedu.ezmanager.util;
 
 public class Util {
     public static final int USER_JAVA_INDEX_DIFF = 1;

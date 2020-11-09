@@ -2,8 +2,8 @@
 
 package seedu.ezmanager.commands.task;
 
-import seedu.ezmanager.EzExceptions;
-import seedu.ezmanager.EzLogger;
+import seedu.ezmanager.util.EzExceptions;
+import seedu.ezmanager.util.EzLogger;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 
-import static seedu.ezmanager.Parser.getHashValue;
-import static seedu.ezmanager.Util.DATE_KEY;
-import static seedu.ezmanager.Util.EMPTY_PROJECT_LIST;
-import static seedu.ezmanager.Util.INVALID_TASK_ID;
-import static seedu.ezmanager.Util.TASK_INDEX_KEY;
-import static seedu.ezmanager.Util.USER_JAVA_INDEX_DIFF;
-import static seedu.ezmanager.Util.WRONG_DATE_FORMAT;
+import static seedu.ezmanager.parser.Parser.getHashValue;
+import static seedu.ezmanager.util.Util.DATE_KEY;
+import static seedu.ezmanager.util.Util.EMPTY_PROJECT_LIST;
+import static seedu.ezmanager.util.Util.INVALID_TASK_ID;
+import static seedu.ezmanager.util.Util.TASK_INDEX_KEY;
+import static seedu.ezmanager.util.Util.USER_JAVA_INDEX_DIFF;
+import static seedu.ezmanager.util.Util.WRONG_DATE_FORMAT;
 
 public class TaskAssignDeadlineCommand extends Command {
     private int projectIndex;

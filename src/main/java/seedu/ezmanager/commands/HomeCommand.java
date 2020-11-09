@@ -1,6 +1,6 @@
 package seedu.ezmanager.commands;
 
-import seedu.ezmanager.Parser;
+import seedu.ezmanager.parser.Parser;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
 import seedu.ezmanager.ui.Ui;

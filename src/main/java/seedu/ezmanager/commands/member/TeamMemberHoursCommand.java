@@ -1,6 +1,6 @@
 package seedu.ezmanager.commands.member;
 
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
@@ -10,11 +10,11 @@ import seedu.ezmanager.ui.Ui;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static seedu.ezmanager.Parser.getHashValue;
-import static seedu.ezmanager.Util.INVALID_MEMBER_ID;
-import static seedu.ezmanager.Util.MEMBER_INDEX_KEY;
-import static seedu.ezmanager.Util.MINUTES_IN_HOUR_DOUBLE;
-import static seedu.ezmanager.Util.USER_JAVA_INDEX_DIFF;
+import static seedu.ezmanager.parser.Parser.getHashValue;
+import static seedu.ezmanager.util.Util.INVALID_MEMBER_ID;
+import static seedu.ezmanager.util.Util.MEMBER_INDEX_KEY;
+import static seedu.ezmanager.util.Util.MINUTES_IN_HOUR_DOUBLE;
+import static seedu.ezmanager.util.Util.USER_JAVA_INDEX_DIFF;
 
 public class TeamMemberHoursCommand extends Command {
 

@@ -2,7 +2,7 @@ package seedu.ezmanager.commands.task;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.project.Project;
 import seedu.ezmanager.task.Task;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package seedu.ezmanager.member;
 
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.project.Project;
 import seedu.ezmanager.task.Task;
 

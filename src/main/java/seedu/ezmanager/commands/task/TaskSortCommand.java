@@ -1,6 +1,6 @@
 package seedu.ezmanager.commands.task;
 
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
 import seedu.ezmanager.commands.Command;
@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
-import static seedu.ezmanager.Parser.getHashValue;
+import static seedu.ezmanager.parser.Parser.getHashValue;
 
 public class TaskSortCommand extends Command {
     private int projectIndex;

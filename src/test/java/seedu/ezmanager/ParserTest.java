@@ -26,6 +26,8 @@ import seedu.ezmanager.commands.task.TaskDoneCommand;
 import seedu.ezmanager.commands.task.TaskEditCommand;
 import seedu.ezmanager.commands.task.TaskListCommand;
 import seedu.ezmanager.commands.task.TaskSortCommand;
+import seedu.ezmanager.parser.Parser;
+import seedu.ezmanager.util.EzExceptions;
 
 import java.util.HashMap;
 

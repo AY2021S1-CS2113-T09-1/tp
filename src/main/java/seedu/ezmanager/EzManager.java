@@ -2,9 +2,12 @@ package seedu.ezmanager;
 
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
+import seedu.ezmanager.parser.Parser;
 import seedu.ezmanager.project.Project;
 import seedu.ezmanager.storage.Storage;
 import seedu.ezmanager.ui.Ui;
+import seedu.ezmanager.util.EzExceptions;
+import seedu.ezmanager.util.EzLogger;
 
 import java.io.IOException;
 import java.util.ArrayList;

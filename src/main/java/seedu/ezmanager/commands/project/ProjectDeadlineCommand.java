@@ -1,6 +1,6 @@
 package seedu.ezmanager.commands.project;
 
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import static seedu.ezmanager.Parser.getHashValue;
+import static seedu.ezmanager.parser.Parser.getHashValue;
 
 public class ProjectDeadlineCommand extends Command {
     private int projectIndex;

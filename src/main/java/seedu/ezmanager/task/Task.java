@@ -1,6 +1,6 @@
 package seedu.ezmanager.task;
 
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.member.TeamMember;
 
 import java.time.LocalDate;

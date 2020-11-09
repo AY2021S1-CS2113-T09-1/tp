@@ -1,6 +1,6 @@
 package seedu.ezmanager.commands.project;
 
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;

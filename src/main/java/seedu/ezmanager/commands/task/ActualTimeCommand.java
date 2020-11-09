@@ -2,9 +2,9 @@
 
 package seedu.ezmanager.commands.task;
 
-import seedu.ezmanager.EzLogger;
-import seedu.ezmanager.Util;
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzLogger;
+import seedu.ezmanager.util.Util;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 
-import static seedu.ezmanager.Util.HOUR_INDEX_KEY;
-import static seedu.ezmanager.Util.MINUTES_IN_HOUR_INT;
-import static seedu.ezmanager.Util.TASK_INDEX_KEY;
-import static seedu.ezmanager.Util.USER_JAVA_INDEX_DIFF;
-import static seedu.ezmanager.Parser.getHashValue;
+import static seedu.ezmanager.util.Util.HOUR_INDEX_KEY;
+import static seedu.ezmanager.util.Util.MINUTES_IN_HOUR_INT;
+import static seedu.ezmanager.util.Util.TASK_INDEX_KEY;
+import static seedu.ezmanager.util.Util.USER_JAVA_INDEX_DIFF;
+import static seedu.ezmanager.parser.Parser.getHashValue;
 
 public class ActualTimeCommand extends Command {
 

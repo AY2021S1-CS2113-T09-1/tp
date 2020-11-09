@@ -1,4 +1,4 @@
-package seedu.ezmanager;
+package seedu.ezmanager.util;
 
 import java.util.HashMap;
 

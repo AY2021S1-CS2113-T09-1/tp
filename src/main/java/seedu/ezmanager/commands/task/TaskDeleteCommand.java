@@ -1,6 +1,6 @@
 package seedu.ezmanager.commands.task;
 
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 import seedu.ezmanager.ui.Ui;
 
-import static seedu.ezmanager.Parser.getHashValue;
+import static seedu.ezmanager.parser.Parser.getHashValue;
 
 
 public class TaskDeleteCommand extends Command {

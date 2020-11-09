@@ -1,7 +1,9 @@
 //@@author thatseant
 
-package seedu.ezmanager;
+package seedu.ezmanager.parser;
 
+import seedu.ezmanager.util.EzExceptions;
+import seedu.ezmanager.util.EzLogger;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.commands.ExitCommand;
 import seedu.ezmanager.commands.PrintHomeViewCommand;

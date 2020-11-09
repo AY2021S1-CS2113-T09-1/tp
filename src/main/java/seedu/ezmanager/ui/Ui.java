@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.Period;
-import static seedu.ezmanager.Util.MINUTES_IN_HOUR_DOUBLE;
+import static seedu.ezmanager.util.Util.MINUTES_IN_HOUR_DOUBLE;
 
 public class Ui {
 

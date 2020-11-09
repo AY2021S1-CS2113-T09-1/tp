@@ -2,7 +2,7 @@ package seedu.ezmanager.commands.member;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.ezmanager.EzExceptions;
+import seedu.ezmanager.util.EzExceptions;
 import seedu.ezmanager.commands.PrintHomeViewCommand;
 import seedu.ezmanager.commands.task.TaskListCommand;
 import seedu.ezmanager.member.TeamMember;

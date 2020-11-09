@@ -3,20 +3,20 @@
 package seedu.ezmanager.commands.member;
 
 import java.util.HashMap;
-import seedu.ezmanager.EzExceptions;
-import seedu.ezmanager.EzLogger;
+import seedu.ezmanager.util.EzExceptions;
+import seedu.ezmanager.util.EzLogger;
 import seedu.ezmanager.commands.Command;
 import seedu.ezmanager.member.TeamMember;
 import seedu.ezmanager.project.Project;
 import seedu.ezmanager.ui.Ui;
 
-import static seedu.ezmanager.Parser.getHashValue;
-import static seedu.ezmanager.Util.INDEX_NON_INTEGER;
-import static seedu.ezmanager.Util.INVALID_PROJECT_ID;
-import static seedu.ezmanager.Util.INVALID_TEAM_MEMBER_ID;
-import static seedu.ezmanager.Util.MEMBER_INDEX_KEY;
-import static seedu.ezmanager.Util.PROJECT_INDEX_KEY;
-import static seedu.ezmanager.Util.USER_JAVA_INDEX_DIFF;
+import static seedu.ezmanager.parser.Parser.getHashValue;
+import static seedu.ezmanager.util.Util.INDEX_NON_INTEGER;
+import static seedu.ezmanager.util.Util.INVALID_PROJECT_ID;
+import static seedu.ezmanager.util.Util.INVALID_TEAM_MEMBER_ID;
+import static seedu.ezmanager.util.Util.MEMBER_INDEX_KEY;
+import static seedu.ezmanager.util.Util.PROJECT_INDEX_KEY;
+import static seedu.ezmanager.util.Util.USER_JAVA_INDEX_DIFF;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
